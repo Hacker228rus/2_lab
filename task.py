@@ -11,9 +11,9 @@ class Vehicle:
         :param model: Модель транспортного средства.
         :param year: Год выпуска транспортного средства.
         """
-        self.__brand = brand  # Инкапсуляция, чтобы предотвратить прямое изменение марки
-        self.__model = model  # Инкапсуляция, чтобы предотвратить прямое изменение модели
-        self.__year = year    # Инкапсуляция, чтобы предотвратить прямое изменение года выпуска
+        self._brand = brand  # Инкапсуляция, чтобы предотвратить прямое изменение марки
+        self._model = model  # Инкапсуляция, чтобы предотвратить прямое изменение модели
+        self._year = year    # Инкапсуляция, чтобы предотвратить прямое изменение года выпуска
 
     def get_info(self) -> str:
         """
@@ -21,7 +21,7 @@ class Vehicle:
 
         :return: Строка с информацией о транспортном средстве.
         """
-        return f"{self.__brand} {self.__model}, {self.__year}"
+        return f"{self._brand} {self._model}, {self._year}"
 
     def __str__(self) -> str:
         """
@@ -37,7 +37,7 @@ class Vehicle:
 
         :return: Строка с информацией о транспортном средстве.
         """
-        return f"Vehicle(brand='{self.__brand}', model='{self.__model}', year={self.__year})"
+        return f"Vehicle(brand='{self._brand}', model='{self._model}', year={self._year})"
 
 
 class Car(Vehicle):
@@ -55,10 +55,7 @@ class Car(Vehicle):
         :param doors: Количество дверей в легковом автомобиле.
         """
         super().__init__(brand, model, year)  # Вызов конструктора базового класса
-        self._Vehicle__year = None
-        self._Vehicle__model = None
-        self._Vehicle__brand = None
-        self.__doors = doors  # Инкапсуляция, чтобы предотвратить прямое изменение количества дверей
+        self._doors = doors  # Инкапсуляция, чтобы предотвратить прямое изменение количества дверей
 
     def get_info(self) -> str:
         """
@@ -66,7 +63,7 @@ class Car(Vehicle):
 
         :return: Строка с информацией о легковом автомобиле.
         """
-        return f"{super().get_info()}, Doors: {self.__doors}"
+        return f"{super().get_info()}, Doors: {self._doors}"
 
     def __str__(self) -> str:
         """
@@ -82,8 +79,8 @@ class Car(Vehicle):
 
         :return: Строка с информацией о легковом автомобиле.
         """
-        return (f"Car(brand='{self._Vehicle__brand}', model='{self._Vehicle__model}', "
-                f"year={self._Vehicle__year}, doors={self.__doors})")
+        return (f"Car(brand='{self._brand}', model='{self._model}', "
+                f"year={self._year}, doors={self._doors})")
 
 if __name__ == "__main__":
     my_car = Car("Toyota", "Camry", 2020, 4)
